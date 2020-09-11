@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace DeveloperTi.WebScraping
 {
@@ -6,7 +7,11 @@ namespace DeveloperTi.WebScraping
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var services = new ServiceCollection();
+            Startup.ConfigureServices(services);
+            services.BuildServiceProvider()
+                    .GetService<ConsoleApp>()
+                    .Run();
         }
     }
 }
